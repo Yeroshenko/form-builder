@@ -1,11 +1,10 @@
-import React from 'react'
 import { render } from '@testing-library/react'
 
-import Index from '../pages/index'
+import SharedUiKit from './SharedUiKit'
 
-describe('Index', () => {
+describe('SharedUiKit', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<Index />)
+    const { baseElement } = render(<SharedUiKit />)
     expect(baseElement).toBeTruthy()
   })
 })

@@ -2,6 +2,8 @@
   "version": 2,
   "projects": {
     "frontend-client": "apps/frontend/client",
-    "frontend-client-e2e": "apps/frontend/client-e2e"
+    "frontend-client-e2e": "apps/frontend/client-e2e",
+    "frontend-ui-kit-e2e": "apps/frontend/ui-kit-e2e",
+    "shared-ui-kit": "libs/shared/ui-kit"
   }
 }
