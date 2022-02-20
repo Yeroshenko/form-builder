@@ -2,6 +2,7 @@
   "version": 2,
   "projects": {
     "frontend-client": "apps/frontend/client",
-    "shared-ui-kit": "libs/shared/ui-kit"
+    "shared-ui-kit": "libs/shared/ui-kit",
+    "shared-utils": "libs/shared/utils"
   }
 }

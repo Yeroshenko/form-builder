@@ -20,6 +20,9 @@
     "paths": {
       "@ui-kit": [
         "libs/shared/ui-kit/src/index.ts"
+      ],
+      "@utils": [
+        "libs/shared/utils/src/index.ts"
       ]
     }
   },
