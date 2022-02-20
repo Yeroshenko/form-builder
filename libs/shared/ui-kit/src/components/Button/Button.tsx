@@ -14,7 +14,7 @@ type IButtonHtmlType = 'submit' | 'reset' | 'button'
 export type IButtonProps = SharedButtonProps<HTMLButtonElement> & {
   type?: IButtonType
   htmlType?: IButtonHtmlType
-  disabled: boolean
+  disabled?: boolean
 }
 
 export const Button: FC<IButtonProps> = ({
