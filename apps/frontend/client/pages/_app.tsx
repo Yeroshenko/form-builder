@@ -1,17 +1,30 @@
+import { ReactElement, ReactNode } from 'react'
+import { NextPage } from 'next'
 import { AppProps } from 'next/app'
 import Head from 'next/head'
 
-function CustomApp({ Component, pageProps }: AppProps) {
+import { ThemeProvider } from '@ui-kit'
+
+type NextPageWithLayout = NextPage & {
+  getLayout?: (page: ReactElement) => ReactNode
+}
+
+type AppPropsWithLayout = AppProps & {
+  Component: NextPageWithLayout
+}
+
+const App = ({ Component, pageProps }: AppPropsWithLayout) => {
+  // Use the layout defined at the page level, if available
+  const getLayout = Component.getLayout ?? (page => page)
+
   return (
-    <>
+    <ThemeProvider>
       <Head>
         <title>Welcome to client!</title>
       </Head>
-      <main className="app">
-        <Component {...pageProps} />
-      </main>
-    </>
+      {getLayout(<Component {...pageProps} />)}
+    </ThemeProvider>
   )
 }
 
-export default CustomApp
+export default App

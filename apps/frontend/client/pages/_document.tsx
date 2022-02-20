@@ -1,27 +1,36 @@
-import { ReactElement } from 'react'
-import Document, { Head, Html, Main, NextScript } from 'next/document'
+import Document, { DocumentContext, DocumentInitialProps } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
 
-export default class CustomDocument extends Document<{
-  styleTags: ReactElement[]
-}> {
-  static getInitialProps({ renderPage }) {
+/*
+SSR with stylesheet rehydration
+
+The fancy term which means: serve the required styles for the first render
+within the HTML and then load the rest in the client.
+* */
+
+export default class MyDocument extends Document {
+  static async getInitialProps(ctx: DocumentContext): Promise<DocumentInitialProps> {
     const sheet = new ServerStyleSheet()
-    const page = renderPage(App => props => sheet.collectStyles(<App {...props} />))
-    const styleTags = sheet.getStyleElement()
+    const originalRenderPage = ctx.renderPage
 
-    return { ...page, styleTags }
-  }
+    try {
+      ctx.renderPage = () =>
+        originalRenderPage({
+          enhanceApp: App => props => sheet.collectStyles(<App {...props} />)
+        })
 
-  render() {
-    return (
-      <Html>
-        <Head>{this.props.styleTags}</Head>
-        <body>
-          <Main />
-          <NextScript />
-        </body>
-      </Html>
-    )
+      const initialProps = await Document.getInitialProps(ctx)
+      return {
+        ...initialProps,
+        styles: (
+          <>
+            {initialProps.styles}
+            {sheet.getStyleElement()}
+          </>
+        )
+      }
+    } finally {
+      sheet.seal()
+    }
   }
 }
