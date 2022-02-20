@@ -7,8 +7,8 @@ module.exports = {
 
   stories: [
     ...rootMain.stories,
-    '../src/lib/**/*.stories.mdx',
-    '../src/lib/**/*.stories.@(js|jsx|ts|tsx)'
+    '../src/components/**/*.stories.mdx',
+    '../src/components/**/*.stories.@(js|jsx|ts|tsx)'
   ],
   addons: [...rootMain.addons, '@nrwl/react/plugins/storybook'],
   webpackFinal: async (config, { configType }) => {
@@ -22,3 +22,9 @@ module.exports = {
     return config
   }
 }
+
+// import { addDecorator } from '@storybook/react'
+// import { ThemeProvider } from '../theme'
+//
+// // Styled Components theme provider wraps app
+// addDecorator(story => <ThemeProvider>{story()}</ThemeProvider>)

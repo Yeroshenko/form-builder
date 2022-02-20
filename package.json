@@ -13,12 +13,14 @@
     "@nrwl/next": "13.8.3",
     "core-js": "^3.6.5",
     "next": "12.1.0",
+    "polished": "^4.1.4",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-is": "17.0.2",
     "regenerator-runtime": "0.13.7",
     "styled-components": "5.3.3",
-    "tslib": "^2.0.0"
+    "tslib": "^2.0.0",
+    "web-platform-alpha": "^0.0.1-alpha.24"
   },
   "devDependencies": {
     "@babel/core": "7.12.13",
