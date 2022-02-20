@@ -1,11 +1,11 @@
 import React from 'react'
-import { render } from '@testing-library/react'
+import { testingUtils } from '@utils'
 
-import Index from '../pages/index'
+import IndexPage from '../pages/index'
 
-describe('Index', () => {
+describe('Index page', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<Index />)
+    const { baseElement } = testingUtils.render(<IndexPage />)
     expect(baseElement).toBeTruthy()
   })
 })
